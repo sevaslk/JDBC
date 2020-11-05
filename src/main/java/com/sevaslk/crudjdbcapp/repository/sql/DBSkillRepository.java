@@ -1,5 +1,6 @@
 package com.sevaslk.crudjdbcapp.repository.sql;
 
+import com.sevaslk.crudjdbcapp.model.Developer;
 import com.sevaslk.crudjdbcapp.model.Skill;
 
 import java.sql.ResultSet;
@@ -13,14 +14,15 @@ public class DBSkillRepository {
         ResultSet rs = DBUtil.executeQueryApp("SELECT * FROM skills");
         List<Skill> skillList = new ArrayList<>();
         while (rs.next()) {
-            skillList.add(new Skill(rs.getInt(1), rs.getString(2)));
+            Skill skill = new Skill(rs.getInt(1), rs.getString(2));
+            skillList.add(skill);
         }
         rs.close();
         return skillList;
     }
 
     public Skill getById(int id) throws SQLException {
-        ResultSet rs = DBUtil.executeQueryApp("SELECT * FROM skills WHERE idskills=" + id);
+        ResultSet rs = DBUtil.executeQueryApp("SELECT * FROM skills WHERE id = " + id);
         Skill skill = null;
         while (rs.next()) {
             skill = new Skill(rs.getInt(1), rs.getString(2));
@@ -41,3 +43,6 @@ public class DBSkillRepository {
         DBUtil.executeUpdateApp("DELETE FROM skills WHERE idskills=" + id);
     }
 }
+
+
+

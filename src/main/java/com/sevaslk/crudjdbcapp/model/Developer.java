@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class Developer {
-    private Long id;
+    private int id;
     private String name;
     private List<Skill> skills;
     private Account account;
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -25,14 +25,14 @@ public class Developer {
         this.account = account;
     }
 
-        public Developer(Long id, String name, List<Skill> skills, Account account) {
+        public Developer(int id, String name, List<Skill> skills, Account account) {
         this.id = id;
         this.name = name;
         this.skills = skills;
         this.account = account;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 

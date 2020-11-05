@@ -3,15 +3,15 @@ package com.sevaslk.crudjdbcapp.model;
 import java.util.Objects;
 
 public class Account {
-    private Long id;
+    private int id;
     private AccountStatus accountStatus;
 
-    public Account(Long id, AccountStatus accountStatus) {
+    public Account(int id, AccountStatus accountStatus) {
         this.id = id;
         this.accountStatus = accountStatus;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -31,5 +31,13 @@ public class Account {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", accountStatus=" + accountStatus +
+                '}';
     }
 }
