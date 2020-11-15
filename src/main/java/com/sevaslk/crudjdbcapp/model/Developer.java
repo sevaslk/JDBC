@@ -25,7 +25,7 @@ public class Developer {
         this.account = account;
     }
 
-        public Developer(int id, String name, List<Skill> skills, Account account) {
+    public Developer(int id, String name, List<Skill> skills, Account account) {
         this.id = id;
         this.name = name;
         this.skills = skills;
@@ -34,6 +34,18 @@ public class Developer {
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public Account getAccount() {
+        return account;
     }
 
     @Override
@@ -59,6 +71,6 @@ public class Developer {
                 ", name='" + name + '\'' +
                 ", skills=" + skills +
                 ", account=" + account +
-                '}';
+                '}' + "\n";
     }
 }

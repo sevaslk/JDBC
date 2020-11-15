@@ -1,13 +1,27 @@
-package com.sevaslk.crudjdbcapp.repository.sql;
+package com.sevaslk.crudjdbcapp.utils;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 public class DBUtil {
 
-    private static final String URL = "jdbc:mysql://localhost/mybase?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String USER = "root";
-    private static final String PASSWORD = "ssss";
+
+    private static Properties properties = new Properties();
+
+    static {
+        try (FileInputStream fileInputStream = new FileInputStream("config.properties")) {
+            properties.load(fileInputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static final String URL = properties.getProperty("URL");
+    private static final String JDBC_DRIVER = properties.getProperty("JDBC_DRIVER");
+    private static final String USER = properties.getProperty("USER");
+    private static String PASSWORD = properties.getProperty("PASSWORD");
 
     private static Connection connection;
 
@@ -24,8 +38,7 @@ public class DBUtil {
         return connection;
     }
 
-
-    static ResultSet executeQueryApp(String sql) throws SQLException {
+    public static ResultSet executeQueryApp(String sql) throws SQLException {
         try {
             Statement statement = getConnection().createStatement();
             return statement.executeQuery(sql);
@@ -34,7 +47,7 @@ public class DBUtil {
         }
     }
 
-    static void executeUpdateApp(String sql) throws SQLException {
+    public static void executeUpdateApp(String sql) throws SQLException {
         try {
             Statement statement = getConnection().createStatement();
             statement.executeUpdate(sql);
