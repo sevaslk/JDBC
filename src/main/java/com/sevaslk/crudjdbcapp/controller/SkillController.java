@@ -7,6 +7,9 @@ import com.sevaslk.crudjdbcapp.repository.jdbc.JDBCSkillRepositoryImpl;
 import java.util.List;
 
 public class SkillController {
+    public SkillController() {
+    }
+
     private SkillRepository skillRepository = new JDBCSkillRepositoryImpl();
 
     public List<Skill> getAll() {

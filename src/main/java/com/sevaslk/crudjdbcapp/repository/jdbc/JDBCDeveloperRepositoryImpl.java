@@ -16,7 +16,7 @@ public class JDBCDeveloperRepositoryImpl implements DeveloperRepository {
     private static Properties properties = new Properties();
 
     static {
-        try (FileInputStream fileInputStream = new FileInputStream("config.properties")) {
+        try (FileInputStream fileInputStream = new FileInputStream("dbconfig.properties")) {
             properties.load(fileInputStream);
         } catch (IOException e) {
             e.printStackTrace();
