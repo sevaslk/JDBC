@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 class SkillControllerTest {
 
     private static final Skill testSkill = new Skill(1, "testSkill");
-    private static List<Skill> testSkillList;
+
     @InjectMocks
     private SkillRepository skillRepository = mock(SkillRepository.class);
     @InjectMocks
@@ -37,7 +37,6 @@ class SkillControllerTest {
 
     @Test
     void getAllTest_Exception() {
-        List<Skill> skills = controllerUnderTest.getAll();
         given(controllerUnderTest.getAll()).willAnswer(invocation -> {
             throw new SQLExpectedException("testException");
         });
